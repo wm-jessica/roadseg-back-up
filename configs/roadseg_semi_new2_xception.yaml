@@ -1,0 +1,23 @@
+# 新的数据的配置文件，扩增之后的
+
+# arguments for dataset
+dataset: roadseg_semi_new2
+nclass: 2
+crop_size: 512
+data_root: data/roadseg_semi_new2
+
+# arguments for training
+epochs: 1500
+batch_size: 4 # per GPU x 4 GPUs
+lr: 0.005
+lr_multi: 10.0
+criterion:
+  name: CELoss
+  kwargs:
+    ignore_index: 255
+    weight: [1, 10]
+conf_thresh: 0.95
+
+# arguments for model 
+backbone: xception  # [resnet101, xception]
+dilations: [6, 12, 18]
